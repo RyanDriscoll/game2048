@@ -5,6 +5,9 @@
         <!-- TODO 5 add board with v-for binding -->
         <!-- read: https://vuejs.org/v2/guide/list.html#Mapping-an-Array-to-Elements-with-v-for -->
 
+        <div class="board">
+          <tile v-for="tile in board" :tileData="tile" :key="tile.id"></tile>
+        </div>
         <!-- EXTRA add shadow board for UX-->
 
       </div>
@@ -13,14 +16,18 @@
 
   Vue.component("game", {
     template: html,
-    data () {
+    data() {
       // TODO 1: 
       // https://vuejs.org/v2/guide/components.html#data-Must-Be-a-Function
+      return {
+        board: []
+      }
     },
 
     mounted() {
       // TODO 3: call the method to setup board
       // read: https://vuejs.org/v2/guide/instance.html#Lifecycle-Diagram
+      this.setupBoard()
     },
 
     methods: {
@@ -44,6 +51,7 @@
 
         // TODO 2: set value of the randomItem to 2
         // read: https://vuejs.org/v2/guide/events.html#Methods-in-Inline-Handlers
+        randomItem.value = 2;
       },
 
       newGame() {
@@ -54,7 +62,7 @@
 
       resetBoard() {
         this.board = Array.apply(null, { length: 16 })
-          .map(function (_, index) { 
+          .map(function (_, index) {
             return {
               id: index,
               value: 0
