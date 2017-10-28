@@ -5,7 +5,7 @@
     <div class="game">
       <!-- TODO 2: register event handler for new-game() event -->
       <!-- read: https://vuejs.org/v2/guide/components.html#Using-v-on-with-Custom-Events -->
-      <game-menu></game-menu>
+      <game-menu @new-game="newGame()"></game-menu>
       <div class="game-container">
         <div class="board">
           <tile v-for="tile in board" :tile="tile" :key="tile.id"></tile>
@@ -19,7 +19,7 @@
 
   Vue.component("game", {
     template: html,
-    data () {
+    data() {
       return {
         board: [],
       }
@@ -60,7 +60,7 @@
 
       resetBoard() {
         this.board = Array.apply(null, { length: 16 })
-          .map(function (_, index) { 
+          .map(function (_, index) {
             return {
               id: index,
               value: 0
