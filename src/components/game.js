@@ -21,7 +21,8 @@
     template: html,
     // TODO 1: add mixins to Vue components
     // read: https://vuejs.org/v2/guide/mixins.html
-    data () {
+    mixins: [window.app.mixins.control],
+    data() {
       return {
         board: [],
       }
@@ -34,7 +35,8 @@
     methods: {
 
       setupBoard() {
-        this.newGame()
+        this.newGame();
+        this.registerControl();
         // TODO 2: add mixins to Vue components
       },
 
@@ -63,7 +65,7 @@
 
       resetBoard() {
         this.board = Array.apply(null, { length: 16 })
-          .map(function (_, index) { 
+          .map(function (_, index) {
             return {
               id: index,
               value: 0
