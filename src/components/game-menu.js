@@ -13,6 +13,7 @@
             <div class="score-value">0000</div>
           </div>
         </div>
+        <a class="button space-right" v-on:click="newGame()">New Game</a>
       </div>
 
       <!-- TODO 1: register click event to call newGame() -->
@@ -26,6 +27,7 @@
 
     methods: {
       newGame() {
+        alert("new Game click");
         // TODO 2: emit custom event
         // https://vuejs.org/v2/guide/components.html#Using-v-on-with-Custom-Event
       }
